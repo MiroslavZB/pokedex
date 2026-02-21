@@ -13,9 +13,22 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # State management
+  flutter_hooks: ^0.20.5
+  hooks_riverpod: ^2.4.4
+  riverpod_annotation: ^2.2.1
+
+  # Serialization code generators
+  json_annotation: ^4.9.0
+
   cupertino_icons: ^1.0.8
+  chopper: ^8.5.0
 
 dev_dependencies:
+  # State code generators
+  riverpod_lint: ^2.3.7
+  riverpod_generator: ^2.3.4
+
   flutter_test:
     sdk: flutter
 
