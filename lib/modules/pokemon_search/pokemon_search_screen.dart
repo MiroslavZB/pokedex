@@ -70,6 +70,7 @@ class PokemonSearchScreen extends HookConsumerWidget {
 
                   return PagedListView<int, PokemonListItem>(
                     pagingController: pagingController,
+                    padding: EdgeInsets.only(bottom: 100),
                     builderDelegate: PagedChildBuilderDelegate<PokemonListItem>(
                       itemBuilder: (context, pokemon, _) => PokemonListCard(pokemon),
                       firstPageErrorIndicatorBuilder: (context) => Center(
