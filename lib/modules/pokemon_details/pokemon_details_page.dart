@@ -6,6 +6,7 @@ import 'package:pokedex/modules/pokemon_details/components/pokemon_stats_card.da
 import 'package:pokedex/modules/pokemon_details/components/pokemon_types_card.dart';
 import 'package:pokedex/shared/functions.dart';
 import 'package:pokedex/modules/pokemon_details/state/pokemon_details_state.dart';
+import 'package:pokedex/state/bookmarks_state.dart';
 
 class PokemonDetailsPage extends ConsumerWidget {
   final String pokemonName;
@@ -18,11 +19,26 @@ class PokemonDetailsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pokemonDetailsState = ref.watch(pokemonDetailsStateProvider(pokemonName));
+    final bookmarksNotifier = ref.read(bookmarksStateProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(pokemonName.capitalizeFirst()),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          pokemonDetailsState.maybeWhen(
+            data: (pokemon) {
+              final isBookmarked = ref.watch(bookmarksStateProvider).any((p) => p.id == pokemon.id);
+              return IconButton(
+                icon: Icon(
+                  isBookmarked ? Icons.bookmark : Icons.bookmark_border,
+                ),
+                onPressed: () => bookmarksNotifier.toggleBookmark(pokemon),
+              );
+            },
+            orElse: () => const SizedBox.shrink(),
+          ),
+        ],
       ),
       body: pokemonDetailsState.when(
         data: (pokemon) => SingleChildScrollView(
@@ -35,9 +51,7 @@ class PokemonDetailsPage extends ConsumerWidget {
                 child: Hero(
                   tag: 'pokemon_${pokemon.id}',
                   child: Image.network(
-                    pokemon.sprites.other?.officialArtwork?.frontDefault ?? 
-                    pokemon.sprites.frontDefault ?? 
-                    '',
+                    pokemon.sprites.other?.officialArtwork?.frontDefault ?? pokemon.sprites.frontDefault ?? '',
                     width: 250,
                     height: 250,
                     fit: BoxFit.contain,

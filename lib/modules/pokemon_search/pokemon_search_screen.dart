@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:pokedex/components/pokemon_list_card.dart';
 import 'package:pokedex/models/pokemon_list_item.dart';
+import 'package:pokedex/modules/bookmarks/bookmarks_page.dart';
 import 'package:pokedex/modules/pokemon_search/hooks/use_search_controller_with_debounce.dart';
 import 'package:pokedex/modules/pokemon_search/state/pokemon_list_state.dart';
 import 'package:pokedex/shared/functions.dart';
@@ -68,6 +69,16 @@ class PokemonSearchScreen extends HookConsumerWidget {
         appBar: AppBar(
           title: const Text('Pokédex'),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.bookmark),
+              iconSize: 32,
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const BookmarksPage()),
+              ),
+            ),
+          ],
         ),
         body: Column(
           children: [
