@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -23,7 +21,7 @@ class PokemonSearchScreen extends HookConsumerWidget {
     final pagingController = useMemoized(() => PagingController<int, PokemonListItem>(firstPageKey: 100));
 
     useEffect(() {
-      Future.microtask(() => ref.read(pokemonListStateProvider.notifier).loadInitialPokemon());
+      scheduleAfterBuild(() => ref.read(pokemonListStateProvider.notifier).loadInitialPokemon());
       return null;
     }, []);
 
@@ -61,7 +59,7 @@ class PokemonSearchScreen extends HookConsumerWidget {
 
     final searchController = useSearchControllerWithDebounce(
       ref,
-      pagingController.refresh,
+      refreshPagingController: pagingController.refresh,
     );
 
     return GestureDetector(
@@ -108,14 +106,12 @@ class PokemonSearchScreen extends HookConsumerWidget {
                     ),
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => const WeatherRecommendationPage(),
-                        ),
-                      );
-                    },
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const WeatherRecommendationPage(),
+                      ),
+                    ),
                     icon: const Icon(Icons.wb_sunny),
                     label: const Text('Suggest Pokémon by Weather'),
                     style: ElevatedButton.styleFrom(
