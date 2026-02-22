@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/modules/pokemon_details/components/pokemon_ability_card.dart';
-import 'package:pokedex/models/pokemon_ability.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_ability.dart';
 
 class PokemonAbilitiesCard extends StatelessWidget {
   final List<PokemonAbility> abilities;

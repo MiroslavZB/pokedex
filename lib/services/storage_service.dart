@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:get_storage/get_storage.dart';
-import 'package:pokedex/models/pokemon_detail.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_detail.dart';
 
 abstract class StorageService {
   static final GetStorage _storage = GetStorage();

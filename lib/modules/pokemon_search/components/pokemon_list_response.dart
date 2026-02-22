@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex/models/pokemon_list_item.dart';
+import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 
 part 'pokemon_list_response.g.dart';
 

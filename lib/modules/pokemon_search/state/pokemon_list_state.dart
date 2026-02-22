@@ -1,4 +1,5 @@
-import 'package:pokedex/models/pokemon_list_item.dart';
+import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
+import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 import 'package:pokedex/services/pokemon_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

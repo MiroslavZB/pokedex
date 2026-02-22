@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:pokedex/components/pokemon_list_card.dart';
+import 'package:pokedex/modules/pokemon_search/components/pokemon_list_card.dart';
 import 'package:pokedex/state/bookmarks_state.dart';
 
 class BookmarksPage extends ConsumerWidget {
