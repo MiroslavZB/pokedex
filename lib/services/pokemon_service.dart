@@ -1,6 +1,6 @@
 import 'package:chopper/chopper.dart';
-import 'package:pokedex/models/pokemon_detail.dart';
-import 'package:pokedex/models/pokemon_list_response.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_detail.dart';
+import 'package:pokedex/modules/pokemon_details/models/type_response.dart';
 
 export 'package:pokedex/api/client.dart';
 export 'package:pokedex/api/extensions/parse_response.dart';

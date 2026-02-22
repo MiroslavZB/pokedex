@@ -25,15 +25,16 @@ class BookmarksPage extends ConsumerWidget {
                     size: 80,
                     color: Colors.grey[400],
                   ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'No bookmarked Pokémon yet',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey[600],
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, right: 8),
+                    child: Text(
+                      'No bookmarked Pokémon yet',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey[600],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 8),
                   Text(
                     'Bookmark Pokémon from the detail screen',
                     style: TextStyle(
@@ -46,10 +47,7 @@ class BookmarksPage extends ConsumerWidget {
             )
           : ListView.builder(
               itemCount: bookmarks.length,
-              itemBuilder: (context, index) {
-                final pokemon = bookmarks[index];
-                return PokemonListCard(pokemon);
-              },
+              itemBuilder: (context, index) => PokemonListCard(bookmarks[index]),
             ),
     );
   }
