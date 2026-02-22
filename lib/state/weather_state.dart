@@ -10,8 +10,7 @@ part 'weather_state.g.dart';
 class WeatherState extends _$WeatherState {
   @override
   FutureOr<WeatherResponse?> build() {
-    final weatherClient = ref.read(chopperWeatherProvider);
-    final weatherService = WeatherService.create(weatherClient);
+    final weatherService = WeatherService.create(ref.read(chopperWeatherProvider));
 
     return weatherService.getCurrentWeather(latitude: 35.6762, longitude: 139.6503).parseResponse;
   }

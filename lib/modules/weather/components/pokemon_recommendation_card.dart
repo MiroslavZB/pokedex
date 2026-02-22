@@ -8,15 +8,12 @@ import 'package:pokedex/state/bookmarks_state.dart';
 class PokemonRecommendationCard extends ConsumerWidget {
   final PokemonDetail pokemon;
 
-  const PokemonRecommendationCard({
-    super.key,
-    required this.pokemon,
-  });
+  const PokemonRecommendationCard({super.key, required this.pokemon});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bookmarksNotifier = ref.watch(bookmarksStateProvider.notifier);
-    final isBookmarked = ref.watch(bookmarksStateProvider).contains(pokemon);
+    final isBookmarked = ref.watch(bookmarksStateProvider).any((p) => p.id == pokemon.id);
 
     final primaryType = pokemon.types.isNotEmpty ? pokemon.types.first.info : null;
     final imageUrl = pokemon.sprites.other?.officialArtwork?.frontDefault ?? pokemon.sprites.frontDefault;
