@@ -83,42 +83,22 @@ class PokemonSearchScreen extends HookConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
-                    child: TextField(
-                      controller: searchController,
-                      onTapOutside: (_) => unfocus(),
-                      decoration: InputDecoration(
-                        hintText: 'Search Pokémon by name or ID...',
-                        prefixIcon: const Icon(Icons.search),
-                        suffixIcon: searchController.text.isNotEmpty
-                            ? IconButton(
-                                icon: const Icon(Icons.clear),
-                                onPressed: searchController.clear,
-                              )
-                            : null,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
+              child: TextField(
+                controller: searchController,
+                onTapOutside: (_) => unfocus(),
+                decoration: InputDecoration(
+                  hintText: 'Search Pokémon by name or ID...',
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: searchController.text.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: searchController.clear,
+                        )
+                      : null,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
-                  ElevatedButton.icon(
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const WeatherRecommendationPage(),
-                      ),
-                    ),
-                    icon: const Icon(Icons.wb_sunny),
-                    label: const Text('Suggest Pokémon by Weather'),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(double.infinity, 48),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             Expanded(
@@ -147,6 +127,19 @@ class PokemonSearchScreen extends HookConsumerWidget {
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const WeatherRecommendationPage(),
+            ),
+          ),
+          icon: const Icon(Icons.wb_sunny),
+          label: const Text('Weather Pokémon Recommendation'),
+          backgroundColor: Colors.orange.shade400,
+          foregroundColor: Colors.white,
+          elevation: 6,
         ),
       ),
     );
