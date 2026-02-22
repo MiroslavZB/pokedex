@@ -1,9 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pokedex/modules/pokemon_details/models/pokemon_ability.dart';
-import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 import 'package:pokedex/modules/pokemon_details/models/pokemon_sprite.dart';
 import 'package:pokedex/modules/pokemon_details/models/pokemon_stat.dart';
 import 'package:pokedex/modules/pokemon_details/models/pokemon_type.dart';
+import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 
 part 'pokemon_detail.g.dart';
 

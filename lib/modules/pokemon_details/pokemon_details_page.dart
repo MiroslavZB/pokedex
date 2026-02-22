@@ -4,8 +4,8 @@ import 'package:pokedex/modules/pokemon_details/components/pokemon_abilities_car
 import 'package:pokedex/modules/pokemon_details/components/pokemon_basic_info_card.dart';
 import 'package:pokedex/modules/pokemon_details/components/pokemon_stats_card.dart';
 import 'package:pokedex/modules/pokemon_details/components/pokemon_types_card.dart';
-import 'package:pokedex/shared/functions.dart';
 import 'package:pokedex/modules/pokemon_details/state/pokemon_details_state.dart';
+import 'package:pokedex/shared/functions.dart';
 import 'package:pokedex/state/bookmarks_state.dart';
 
 class PokemonDetailsPage extends ConsumerWidget {
