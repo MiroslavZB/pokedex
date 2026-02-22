@@ -9,6 +9,7 @@ import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 import 'package:pokedex/modules/bookmarks/bookmarks_page.dart';
 import 'package:pokedex/modules/pokemon_search/hooks/use_search_controller_with_debounce.dart';
 import 'package:pokedex/modules/pokemon_search/state/pokemon_list_state.dart';
+import 'package:pokedex/modules/weather/weather_recommendation_page.dart';
 import 'package:pokedex/shared/functions.dart';
 
 class PokemonSearchScreen extends HookConsumerWidget {
@@ -22,7 +23,7 @@ class PokemonSearchScreen extends HookConsumerWidget {
     final pagingController = useMemoized(() => PagingController<int, PokemonListItem>(firstPageKey: 100));
 
     useEffect(() {
-      Future.microtask(() => pokemonListNotifier.loadInitialPokemon());
+      Future.microtask(() => ref.read(pokemonListStateProvider.notifier).loadInitialPokemon());
       return null;
     }, []);
 
@@ -84,22 +85,44 @@ class PokemonSearchScreen extends HookConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16),
-              child: TextField(
-                controller: searchController,
-                onTapOutside: (_) => unfocus(),
-                decoration: InputDecoration(
-                  hintText: 'Search Pokémon by name or ID...',
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: searchController.text.isNotEmpty
-                      ? IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: searchController.clear,
-                        )
-                      : null,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: TextField(
+                      controller: searchController,
+                      onTapOutside: (_) => unfocus(),
+                      decoration: InputDecoration(
+                        hintText: 'Search Pokémon by name or ID...',
+                        prefixIcon: const Icon(Icons.search),
+                        suffixIcon: searchController.text.isNotEmpty
+                            ? IconButton(
+                                icon: const Icon(Icons.clear),
+                                onPressed: searchController.clear,
+                              )
+                            : null,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const WeatherRecommendationPage(),
+                        ),
+                      );
+                    },
+                    icon: const Icon(Icons.wb_sunny),
+                    label: const Text('Suggest Pokémon by Weather'),
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(double.infinity, 48),
+                    ),
+                  ),
+                ],
               ),
             ),
             Expanded(
