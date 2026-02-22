@@ -58,7 +58,7 @@ class PokemonListState extends _$PokemonListState {
         final detail = await _pokemonService.getPokemonDetail(_searchQuery).parseResponse;
 
         nextPageKey = null;
-        return [];
+        return [detail];
       } catch (e) {
         nextPageKey = null;
         return [];

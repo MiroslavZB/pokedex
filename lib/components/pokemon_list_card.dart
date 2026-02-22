@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/models/pokemon_detail.dart';
 import 'package:pokedex/models/pokemon_list_item.dart';
 import 'package:pokedex/modules/pokemon_details/pokemon_details_page.dart';
 import 'package:pokedex/shared/functions.dart';
@@ -38,6 +39,30 @@ class PokemonListCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('#$pokemonId'),
+            if (pokemon is PokemonDetail)
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 4),
+                    child: Text('Primary Type:'),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                    decoration: BoxDecoration(
+                      color: (pokemon as PokemonDetail).types.first.info.displayColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Text(
+                      (pokemon as PokemonDetail).types.first.info.name.capitalizeFirst(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
           ],
         ),
         trailing: const Icon(Icons.arrow_forward_ios),
