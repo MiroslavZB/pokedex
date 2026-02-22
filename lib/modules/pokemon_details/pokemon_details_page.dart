@@ -19,7 +19,7 @@ class PokemonDetailsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final pokemonDetailsState = ref.watch(pokemonDetailsStateProvider(pokemonName));
-    final bookmarksNotifier = ref.read(bookmarksStateProvider.notifier);
+    final bookmarksNotifier = ref.watch(bookmarksStateProvider.notifier);
 
     return Scaffold(
       appBar: AppBar(
