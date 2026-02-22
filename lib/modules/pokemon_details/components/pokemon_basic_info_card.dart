@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/models/pokemon_detail.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_detail.dart';
 
 class PokemonBasicInfoCard extends StatelessWidget {
   final PokemonDetail pokemon;
@@ -28,14 +28,16 @@ class PokemonBasicInfoCard extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      const Text(
-                        'Height',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: const Text(
+                          'Height',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 8),
                       Text(
                         '${(pokemon.height / 10).toStringAsFixed(1)} m',
                         style: const TextStyle(fontSize: 16),
@@ -44,14 +46,16 @@ class PokemonBasicInfoCard extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      const Text(
-                        'Weight',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 8),
+                        child: const Text(
+                          'Weight',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 8),
                       Text(
                         '${(pokemon.weight / 10).toStringAsFixed(1)} kg',
                         style: const TextStyle(fontSize: 16),

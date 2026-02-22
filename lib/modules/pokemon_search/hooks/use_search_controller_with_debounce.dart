@@ -6,9 +6,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:pokedex/modules/pokemon_search/state/pokemon_list_state.dart';
 
 TextEditingController useSearchControllerWithDebounce(
-  WidgetRef ref,
-  void Function() refreshPagingController,
-) {
+  WidgetRef ref, {
+  required void Function() refreshPagingController,
+}) {
   final searchController = useTextEditingController();
   final debounceTimer = useRef<Timer?>(null);
 
@@ -20,11 +20,15 @@ TextEditingController useSearchControllerWithDebounce(
       debounceTimer.value = Timer(const Duration(milliseconds: 500), () async {
         final query = searchController.text.trim();
         if (query.isEmpty) {
+          final currentCount = ref.read(pokemonListStateProvider).valueOrNull?.length;
+          if (currentCount != null && currentCount == 100) return;
+
           await pokemonListNotifier.loadInitialPokemon();
+          refreshPagingController();
         } else {
           await pokemonListNotifier.searchPokemon(query);
+          refreshPagingController();
         }
-        refreshPagingController();
       });
     }
 

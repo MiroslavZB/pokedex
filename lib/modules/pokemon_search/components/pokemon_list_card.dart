@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/models/pokemon_detail.dart';
-import 'package:pokedex/models/pokemon_list_item.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_detail.dart';
 import 'package:pokedex/modules/pokemon_details/pokemon_details_page.dart';
+import 'package:pokedex/modules/pokemon_search/models/pokemon_list_item.dart';
 import 'package:pokedex/shared/functions.dart';
 
 class PokemonListCard extends StatelessWidget {

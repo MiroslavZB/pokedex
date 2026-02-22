@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/models/pokemon_detail.dart';
+import 'package:pokedex/modules/pokemon_details/models/pokemon_detail.dart';
 import 'package:pokedex/shared/functions.dart';
 
 class PokemonStatsCard extends StatelessWidget {
@@ -15,14 +15,16 @@ class PokemonStatsCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Base Stats',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+            Padding(
+              padding: EdgeInsets.only(bottom: 12),
+              child: const Text(
+                'Base Stats',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            const SizedBox(height: 12),
             ...pokemon.stats.map(
               (stat) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8),
@@ -45,12 +47,14 @@ class PokemonStatsCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: 4),
-                    LinearProgressIndicator(
-                      value: stat.baseStat / 255,
-                      backgroundColor: Colors.grey[300],
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        stat.baseStat > 100 ? Colors.green : Colors.orange,
+                    Padding(
+                      padding: EdgeInsets.only(top: 4),
+                      child: LinearProgressIndicator(
+                        value: stat.baseStat / 255,
+                        backgroundColor: Colors.grey[300],
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          stat.baseStat > 100 ? Colors.green : Colors.orange,
+                        ),
                       ),
                     ),
                   ],

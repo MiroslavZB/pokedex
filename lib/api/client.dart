@@ -12,3 +12,11 @@ final chopperPokedexProvider = Provider<ChopperClient>(
     interceptors: [CustomHeadersInterceptor(ref), const ErrorInterceptor()],
   ),
 );
+
+final chopperWeatherProvider = Provider<ChopperClient>(
+  (ref) => ChopperClient(
+    baseUrl: Uri.parse('https://api.open-meteo.com/v1'),
+    converter: SerializableConverter(),
+    errorConverter: SerializableConverter(),
+  ),
+);
