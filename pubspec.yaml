@@ -13,6 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Packages
+  infinite_scroll_pagination: ^4.0.0
+
   # State management
   flutter_hooks: ^0.20.5
   hooks_riverpod: ^2.4.4
