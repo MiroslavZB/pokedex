@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:pokedex/models/pokemon_detail.dart';
 import 'package:pokedex/services/storage_service.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
