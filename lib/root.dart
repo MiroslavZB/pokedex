@@ -6,6 +6,7 @@ class Root extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Left like this for a potential tab-view/bottom-nav-bar implementation
     return const PokemonSearchScreen();
   }
 }
